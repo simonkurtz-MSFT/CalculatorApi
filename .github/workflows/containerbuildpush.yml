@@ -35,6 +35,9 @@ jobs:
         platforms: linux/amd64
         push: true
         tags:  >
-          ghcr.io/${{ github.repository_owner.tolowercase }}/${{ env.IMAGENAME }}:${{ env.IMAGETAG }}, 
-          ghcr.io/${{ github.repository_owner.tolowercase }}/${{ env.IMAGENAME }}:latest
+          # 07/15/22 - SJK: Very temporarily using a hard-coded value to circumvent the lowercase issue.
+          # ghcr.io/${{ github.repository_owner }}/${{ env.IMAGENAME }}:${{ env.IMAGETAG }}, 
+          # ghcr.io/${{ github.repository_owner }}/${{ env.IMAGENAME }}:latest
+          ghcr.io/$simonkurtz-msft/${{ env.IMAGENAME }}:${{ env.IMAGETAG }}, 
+          ghcr.io/$simonkurtz-msft/${{ env.IMAGENAME }}:latest
 
