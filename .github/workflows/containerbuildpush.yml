@@ -16,6 +16,11 @@ jobs:
     - name: format IMAGETAG
       run: |
         echo "IMAGETAG=v$(date "+%Y%m%d")-${{github.run_number }}" >> $GITHUB_ENV
+    - name: format repo-owner lowercase
+      run: |
+        echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
+      env:
+        OWNER: '${{ github.repository_owner }}'
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
@@ -35,6 +40,5 @@ jobs:
         platforms: linux/amd64
         push: true
         tags:  >
-          ghcr.io/simonkurtz-msft/${{ env.IMAGENAME }}:${{ env.IMAGETAG }}, 
-          ghcr.io/simonkurtz-msft/${{ env.IMAGENAME }}:latest
-
+          ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGENAME }}:${{ env.IMAGETAG }}, 
+          ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGENAME }}:latest
