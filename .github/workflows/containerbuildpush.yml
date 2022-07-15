@@ -35,6 +35,6 @@ jobs:
         platforms: linux/amd64
         push: true
         tags:  >
-          ghcr.io/$simonkurtz-msft/${{ env.IMAGENAME }}:${{ env.IMAGETAG }}, 
-          ghcr.io/$simonkurtz-msft/${{ env.IMAGENAME }}:latest
+          ghcr.io/simonkurtz-msft/${{ env.IMAGENAME }}:${{ env.IMAGETAG }}, 
+          ghcr.io/simonkurtz-msft/${{ env.IMAGENAME }}:latest
 
