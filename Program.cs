@@ -1,3 +1,5 @@
+using Microsoft.OpenApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,16 +9,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-
     string strURL = builder.Configuration.GetValue<string>("ServerURL");
     if (strURL != null && strURL != "")
     {
-        c.AddServer(new Microsoft.OpenApi.Models.OpenApiServer()
+        c.AddServer(new OpenApiServer()
         {
             Url = strURL
         });
     }
 
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Calculator API",
+        Description = "A simple calculator API",
+        Version = "v1"
+    });
+        
 });
 var app = builder.Build();
 
